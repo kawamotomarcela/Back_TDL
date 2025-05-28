@@ -71,6 +71,20 @@ namespace TDLembretes.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpPut("{id}/pontos")]
+        public async Task<IActionResult> AtualizarPontos(string id, [FromBody] AtualizarPontosDTO dto)
+        {
+            try
+            {
+                await _usuarioService.AtualizarPontos(id, dto.Pontos);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+        }
+
 
         [HttpPut("{id}")]
         public async Task<ActionResult> AtualizarUsuario(string id, [FromBody] UsuarioDTO dto)

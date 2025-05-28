@@ -32,6 +32,19 @@ namespace TDLembretes.Services
             await _usuarioRepository.AtualizarUsuario(usuario);
         }
 
+        //PUT Pontos
+        public async Task AtualizarPontos(string id, int pontos)
+        {
+            Usuario? usuario = await _usuarioRepository.GetUsuario(id);
+
+            if (usuario == null)
+                throw new Exception("Usuário não encontrado!");
+
+            usuario.Pontos = pontos;
+            await _usuarioRepository.AtualizarUsuario(usuario);
+        }
+
+
         //PUT senha
 
         public async Task AtualizarSenha(string id, AtualizarSenhaUsuarioDTO dto)
