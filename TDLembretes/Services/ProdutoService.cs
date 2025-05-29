@@ -88,6 +88,7 @@ namespace TDLembretes.Services
 
             return new ProdutoDTO
             {
+                Id = produto.Id, 
                 Nome = produto.Nome,
                 Descricao = produto.Descricao,
                 ImagemUrl = produto.ImagemUrl,
@@ -98,10 +99,11 @@ namespace TDLembretes.Services
 
         public async Task<List<ProdutoDTO>> GetTodosProdutos()
         {
-            var produtos = await _produtoRepository.GetTodosProdutos(); 
+            var produtos = await _produtoRepository.GetTodosProdutos();
 
             return produtos.Select(produto => new ProdutoDTO
             {
+                Id = produto.Id, 
                 Nome = produto.Nome,
                 Descricao = produto.Descricao,
                 ImagemUrl = produto.ImagemUrl,
