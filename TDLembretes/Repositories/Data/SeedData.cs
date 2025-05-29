@@ -14,9 +14,9 @@ namespace TDLembretes.Repositories.Data
                 if (!context.Usuarios.Any())
                 {
                     context.Usuarios.AddRange(
-                        new Usuario("1", "João da Silva", "joaosilva@gmail.com", "1234", 5000, "1499123-5136", new List<UsuarioTarefasOficiais>()),
-                        new Usuario("2", "Roberta Maria", "roberta@gmail.com", "9876", 1000, "1496203-4215", new List<UsuarioTarefasOficiais>()),
-                        new Usuario("3", "Junior Rodrigues", "junior@gmail.com", "1221", 150, "1497428-6342", new List<UsuarioTarefasOficiais>())
+                        new Usuario("1", "João da Silva", "joaosilva@gmail.com", "123", 5000, "1499123-5136", new List<UsuarioTarefasOficiais>()),
+                        new Usuario("2", "Marcelao lindao", "marcelao@gmail.com", "001", 10000, "1496203-4215", new List<UsuarioTarefasOficiais>()),
+                        new Usuario("3", "Junior Rodrigues", "junior@gmail.com", "121", 1500, "1497428-6342", new List<UsuarioTarefasOficiais>())
                     );
                     context.SaveChanges();
                 }
@@ -24,8 +24,8 @@ namespace TDLembretes.Repositories.Data
                 if (!context.Produtos.Any())
                 {
                     context.Produtos.AddRange(
-                        new Produto("301", "Cumpom Mercado", "Cupom para usar no mercado Y", 1000, 5, "Exemplo"),
-                        new Produto("303", "Cumpom Roupa", "Cupom para comprar roupa na loja X", 2000, 5, "Exemplo")
+                        new Produto("301", "Cupom Mercado", "Cupom para usar no mercado Y", 1000, 3, "Exemplo Mercado"),
+                        new Produto("303", "Cupom Roupa", "Cupom para comprar roupa na loja X", 2000, 3, "Exemplo Roupa")
                     );
                     context.SaveChanges();
                 }

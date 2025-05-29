@@ -21,22 +21,25 @@ namespace TDLembretes.Services
         }
 
         /// <summary>
-        /// Realiza uma compra: atualiza pontos, estoque e salva o registro da compra.
+        /// Realiza uma compra de produto com pontos do usuário.
         /// </summary>
         public async Task<bool> RealizarCompra(string usuarioId, string produtoId, int quantidade)
         {
+            if (quantidade <= 0)
+                throw new Exception("A quantidade deve ser maior que zero.");
+
             var usuario = await _usuarioService.GetUsuarioOrThrowException(usuarioId);
             var produto = await _produtoService.GetProdutoOrThrowException(produtoId);
 
-            if (usuario == null || produto == null)
-                throw new Exception("Usuário ou produto não encontrado.");
+            if (produto.QuantidadeDisponivel < quantidade)
+                throw new Exception("Estoque insuficiente para esta compra.");
 
             int custoTotal = produto.CustoEmPontos * quantidade;
 
             if (usuario.Pontos < custoTotal)
                 throw new Exception("Pontos insuficientes para a compra.");
 
-            // Atualiza saldo e estoque
+            // Atualiza saldo do usuário e estoque do produto
             usuario.Pontos -= custoTotal;
             produto.QuantidadeDisponivel -= quantidade;
 
@@ -48,7 +51,8 @@ namespace TDLembretes.Services
             {
                 UsuarioId = usuarioId,
                 ProdutoId = produtoId,
-                Quantidade = quantidade
+                Quantidade = quantidade,
+                DataCompra = DateTime.UtcNow
             };
 
             await _compraRepository.AdicionarCompra(novaCompra);
@@ -57,7 +61,7 @@ namespace TDLembretes.Services
         }
 
         /// <summary>
-        /// Retorna os produtos comprados por um usuário (para exibir como cupons).
+        /// Retorna os produtos comprados por um usuário (como cupons).
         /// </summary>
         public async Task<List<ProdutoDTO>> GetProdutosComprados(string usuarioId)
         {
