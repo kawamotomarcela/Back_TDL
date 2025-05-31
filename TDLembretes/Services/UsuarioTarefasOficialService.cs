@@ -36,7 +36,6 @@ namespace TDLembretes.Services
             await _usuarioTarefasOficialRepository.CreateAsync(novaTarefaUsuario);
         }
 
-        //Atualizar os atributos
         public async Task AtualizarTarefaAsync(string usuarioId, string tarefaOficialId, UsuarioTarefasOficialDTO  atualizacao)
         {
             var tarefaUsuario = await _usuarioTarefasOficialRepository.GetByUsuarioETarefaAsync(usuarioId, tarefaOficialId);
@@ -50,7 +49,6 @@ namespace TDLembretes.Services
             await _usuarioTarefasOficialRepository.UpdateAsync(tarefaUsuario);
         }
 
-        //Atualizar o Status
         public async Task AtualizarStatusTarefaUsuarioAsync(string usuarioId, string tarefaOficialId, AtualizarStatusOficialDTO dto)
         {
             var tarefaUsuario = await _usuarioTarefasOficialRepository.GetByUsuarioETarefaAsync(usuarioId, tarefaOficialId);
@@ -71,8 +69,7 @@ namespace TDLembretes.Services
             await _usuarioTarefasOficialRepository.UpdateAsync(tarefaUsuario);
         }
 
-        //Atualizar a comprovação
-        public async Task AtualizarComprovacaoUrlAsync(string usuarioId, string tarefaOficialId, ComprovaçãoURLDTO dto)
+        public async Task AtualizarComprovacaoUrlAsync(string usuarioId, string tarefaOficialId, ComprovacaoURLDTO dto)
         {
             var tarefaUsuario = await _usuarioTarefasOficialRepository.GetByUsuarioETarefaAsync(usuarioId, tarefaOficialId);
             if (tarefaUsuario == null)
@@ -83,13 +80,11 @@ namespace TDLembretes.Services
             await _usuarioTarefasOficialRepository.UpdateAsync(tarefaUsuario);
         }
 
-
-        //Get de todas tarefas
         public async Task<List<UsuarioTarefasOficiais>> GetTarefasPorUsuarioAsync(string usuarioId)
         {
             return await _usuarioTarefasOficialRepository.GetByUsuarioAsync(usuarioId);
         }
-        //Get tarefa por Id
+
         public async Task<UsuarioTarefasOficiais?> GetTarefaPorUsuarioETarefaAsync(string usuarioId, string tarefaOficialId)
         {
             return await _usuarioTarefasOficialRepository.GetByUsuarioETarefaAsync(usuarioId, tarefaOficialId);

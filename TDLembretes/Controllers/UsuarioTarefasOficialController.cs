@@ -4,6 +4,8 @@ using TDLembretes.DTO.UsuarioTarefasOficial;
 using TDLembretes.Repositories.Data;
 using TDLembretes.Services;
 
+
+
 namespace TDLembretes.Controllers
 {
     [ApiController]
@@ -61,7 +63,7 @@ namespace TDLembretes.Controllers
         }
 
         [HttpPut("{usuarioId}/tarefas-oficiais/{tarefaId}/comprovacao")]
-        public async Task<IActionResult> AtualizarComprovacaoUrl(string usuarioId, string tarefaId, [FromBody] ComprovaçãoURLDTO dto)
+        public async Task<IActionResult> AtualizarComprovacaoUrl(string usuarioId, string tarefaId, [FromBody] ComprovacaoURLDTO dto)
         {
             try
             {

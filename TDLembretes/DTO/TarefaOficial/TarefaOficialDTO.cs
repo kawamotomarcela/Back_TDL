@@ -4,6 +4,7 @@ namespace TDLembretes.DTO.TarefaOficial
 {
     public class TarefaOficialDTO
     {
+        public string Id { get; set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public PrioridadeTarefa Prioridade { get; set; }

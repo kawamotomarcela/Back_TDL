@@ -1,9 +1,7 @@
 ﻿namespace TDLembretes.DTO.TarefaOficial
 {
-    public class ComprovaçãoURLDTO
+    public class ComprovacaoURLDTO
     {
-
-        public string ComprovacaoUrl { get; set; } 
-
+        public string ComprovacaoUrl { get; set; } = string.Empty;
     }
 }
